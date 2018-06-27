@@ -1,23 +1,15 @@
-# 1. Start in a function
-# 2. Enum the func instructions and look for pattern of "heads"
-# 3. print the instruction 2 before the beginning of the pattern
-# 3. look for the same pattern elsewhere in the file
-
 import idautils
-
 def main():
 	
 	KEYWORDS = 'certificate'
-
-
 	cursorList = []
 	real_names = []
 	addresses  = []
 	names = idautils.Names()
 
-
 	print "========= Welcome to Finder ========="
 	print "KEYWORDS = " + KEYWORDS
+
 	# Populate the two above lists with their respective data from the list of tuples returned by idautils.Names()
 	for n in names:
 		real_names.append(n[1]) # real_names[30] ------> addresses[30]
@@ -29,8 +21,8 @@ def main():
 			print "FOUND: " + rn
 
 	temp = -111111
-	for cursor in cursorList:
 
+	for cursor in cursorList:
 		myFunc = idaapi.get_func(cursor)
 		if myFunc:
 			print "--------------------------------------------------------------------------------------------------------------------"
@@ -42,7 +34,7 @@ def main():
 					idc.MakeComm(cursor, 'This is a call after a jump!')
 				cursor = idc.next_head(cursor,myFunc.endEA) # MaxEA()
 		else:
-			print "Can't find index :"
+			print "Can't find index :	"
 			print cursor
 
 	print "========= Finder Ends ========="
