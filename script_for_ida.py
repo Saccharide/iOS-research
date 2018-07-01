@@ -1,11 +1,11 @@
 import idautils
 def main():
 	
-	KEYWORDS = 'certificate'
+	KEYWORDS   = 'error'
 	cursorList = []
 	real_names = []
 	addresses  = []
-	names = idautils.Names()
+	names      = idautils.Names()
 
 	print "========= Welcome to Finder ========="
 	print "KEYWORDS = " + KEYWORDS
@@ -14,13 +14,14 @@ def main():
 	for n in names:
 		real_names.append(n[1]) # real_names[30] ------> addresses[30]
 		addresses.append(n[0])
+		
 	# search for a 'start' name in the names list and if it is there, set cursor to the address of beginning of it
 	for rn in real_names:
 		if rn.lower().find(KEYWORDS.lower()) != -1:
 			cursorList.append(addresses[int(real_names.index(rn))])
 			print "FOUND: " + rn
 
-	temp = -111111
+	temp = -1
 
 	for cursor in cursorList:
 		myFunc = idaapi.get_func(cursor)
