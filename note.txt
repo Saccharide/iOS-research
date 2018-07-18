@@ -1,0 +1,11 @@
+forward traffic from router to computer, 
+open wrt router,
+look at the traffic from router,
+turn on everything to look through the traffic
+
+
+Plans for the week:
+    1) Use wireshark from another device to find out wheather wemo is using UPnP protocol or TCP or both
+    2) Trying to decode the TCP data send by wemo app
+    3) Try to customize the router firmware to redirect traffic that is send by Wemo switch to a local PC
+    4) Use other tool like Burp? to see the traffic send by wemo app or wemo switch
